@@ -28,6 +28,30 @@ fetch(jobSearchRequest)
 .then(function(response) {
     return response.json();
 })
+
+.then(function (videoData) {
+    console.log(videoData);
+})
+
+
 .then(function (jobData) {
     console.log(jobData);
 })
+
+
+
+$(document).ready(function () {
+    var searchButton = $("#search-btn");
+
+    searchButton.on("click", function (event) {
+        event.preventDefault();
+
+        var jobInput = $("#search-input").val().trim();
+
+        if (jobInput === "") {
+            $("#empty-input").modal("show");
+        }
+
+        console.log("All okay");
+    });
+});

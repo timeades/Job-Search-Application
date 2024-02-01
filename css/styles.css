@@ -3,3 +3,22 @@
 #job-search {
     width: 50%;
 }
+
+.parent {
+    background-color: burlywood;
+}
+/* .parent {
+display: inline-flex;
+}
+
+.child1 {
+    width: 100px;
+    height: 100px;
+    background-color: tomato;
+}
+
+.child2 {
+    width: 100px;
+    height: 100px;
+    background-color: yellowgreen; */
+}

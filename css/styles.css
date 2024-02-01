@@ -4,21 +4,13 @@
     width: 50%;
 }
 
-.parent {
-    background-color: burlywood;
-}
-/* .parent {
-display: inline-flex;
-}
-
-.child1 {
-    width: 100px;
-    height: 100px;
-    background-color: tomato;
+.grid-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 20px;
 }
 
-.child2 {
-    width: 100px;
-    height: 100px;
-    background-color: yellowgreen; */
+.videoPlayer {
+    aspect-ratio: 16/9;
+    width: 100%;
 }

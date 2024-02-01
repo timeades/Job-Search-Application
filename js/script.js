@@ -21,3 +21,22 @@ fetch(videoRequest)
 .then(function (videoData) {
     console.log(videoData);
 })
+
+
+
+
+$(document).ready(function () {
+    var searchButton = $("#search-btn");
+
+    searchButton.on("click", function (event) {
+        event.preventDefault();
+
+        var jobInput = $("#search-input").val().trim();
+
+        if (jobInput === "") {
+            $("#empty-input").modal("show");
+        }
+
+        console.log("All okay");
+    });
+});

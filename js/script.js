@@ -46,7 +46,7 @@ $(document).ready(function () {
     searchButton.on("click", function (event) {
         event.preventDefault();
 
-        var jobInput = $("#search-input").val().trim();
+        var jobInput = $("#job-search").val().trim();
 
         if (jobInput === "") {
             $("#empty-input").modal("show");

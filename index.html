@@ -8,24 +8,42 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-   <!-- CSS Styling for the columns that are holding the carousel and the youtube video section-->
+ 
+    <!-- CSS Styling for the columns that are holding the carousel and the youtube video section-->
    <style>
         * {
           box-sizing: border-box;
         }
         
-        /* creating two equal columns that float side by side next to each other */
+/* creating two equal columns that float side by side next to each other */
         .col {
           float: left;
           width: 50%;
           padding: 10px;
-  
         }
+/* Clears floats after the columns */
+.row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+/* Setting the width for the right column that contains the carousel, with the populated job search results */
+      .colright {  
+  width: 30%;
+}
+/* Setting the width for the left column containing the youtube videos for the job interview preparations */
+.colleft {
+  width: 70%;
+}
 
+ /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+      @media screen and (max-width: 600px) {
+  .col {
+    width: 100%;
+  }
+}
 
-
-
-      </style>
+</style>
       
       
     <title>Job Search Application</title>
@@ -53,17 +71,15 @@
         </div>
     </div>
 
-    <!--- Main Container for Job results and Youtube Interview questions Video related to the specific job search, the first 3 divs are for the main container-->
-    <main class="container-fluid">
-            <div class="bg-warning" id="job-results"> 
-                <div class="d-sm-flex">     
-                    <div class="row">
-
-            <!-- Carousel section that will be used to populate the job results that were searched by the user-->
+<!--- Main Container for Job results and Youtube Interview questions Video related to the specific job search, the first div is for the main container-->
+      
+             <div class="row">
+ <!-- Carousel section that will be used to populate the job results that were searched by the user-->
         
-                <div class="col left" style="background-color: aqua;">Column 1
+                <div class="colleft" style="background-color: aqua;">Column 1
 
-                <div id="carouselExampleDark" class="carousel carousel-dark slide">
+
+                 <div id="carouselExampleDark" class="carousel carousel-dark slide">
                     <div class="carousel-indicators">
                       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -100,43 +116,34 @@
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Next</span>
                     </button>
-                  </div>
+                  </div> 
 
 
               </div>
 
             <!--  Section where Youtube video related to the job search results will be embeded -->
-        
-                    <div class="col right" style="background-color: bisque;">Column 2
-
-            <dive class="d-sm-flex">
-            <div id="video" class=" w-100 height-100vh">
-                <section id="video-prep" class="embed-responsive embed-responsive-21by9 ">
-                
-                        <iframe class="videoPlayer" src="https://www.youtube.com/embed/dZ1nb1Temoo?si=q401qFJZW4B2o7p9" 
-                        title="YouTube video player" frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </section>
+            <div class="colright" style="background-color: bisque;">Column 2
+   
+           <section id="video-prep" class="embed-responsive embed-responsive-21by9 ">
+                 <iframe class="videoPlayer" src="https://www.youtube.com/embed/dZ1nb1Temoo?si=q401qFJZW4B2o7p9" 
+                title="YouTube video player" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </section> 
                 <!-- Section where the Youtube video captions with information will go -->
-                <section id="video-details">
-              
-                        <div class="mt-2 mb-5">
+                 <section id="video-details">
+               <div class="mt-2 mb-5">
                             <h6 class="caption">Cloud Engineer Interview Questions </h6>
                             <figcaption class="figure-caption">In this video, Ryan Brown discusses 5 Cloud Engineer interview
                                 questions with answer examples written by William Swansen. For all of our Cloud Engineer
                                 interview questions.</figcaption>
                                 </div>                  
-                </section>   
-            </div>
-            </div>
+                </section>    
+
             </div>
 
-      
-<!--- Closing DIVS for the main section container -->
+<!--- Closing DIVS for the main section row that has two columns in it -->
             </div>
-        </div>
-        </div>
-    </main>
+
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
@@ -145,6 +152,3 @@
 </html>
 
 
-
-
-<!-- <div class="container1-fluid bg-primary mt-3 mb-3 p-3" style="width:800px; float:left;"> -->

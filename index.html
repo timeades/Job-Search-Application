@@ -49,8 +49,6 @@
 
 </style>
       
-      
- 
 
     <title>Job Search Application</title>
   </head>
@@ -58,28 +56,27 @@
     <header class="container-fluid text-center text-white bg-dark p-2">
       <h1>Job App Placeholder Name</h1>
     </header>
-    <div class="container-fluid p-3">
-      <form id="job-search">
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            id="search-input"
-            class="form-control"
-            placeholder="Your dream job"
-            aria-label="Search field for job title"
-            aria-describedby="button-addon2"
-          />
-          <button
-            class="btn btn-outline-secondary"
-            type="submit"
-            id="search-btn"
-          >
-            Search
-          </button>
-        </div>
-      </form>
-    </div>
 
+  <div class="container-fluid p-3">
+    <form id="searchForm">
+      <div class="form-group py-2">
+        <label for="job-search"><h4>Where do you want to go next?</h4></label>
+        <input type="text" class="form-control form-control-lg" id="job-search" aria-label="Job search field" placeholder="Your dream job">
+      </div>
+      <div class="form-group input-group py-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text">City</span>
+        </div>
+        <label for="location-search"></label>
+        <input type="password" class="form-control" id="location-search" placeholder="">
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="save-search">
+        <label class="form-check-label" for="save-search">Save my search</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
 
 <!--- Main Container for Job results and Youtube Interview questions Video related to the specific job search, the first div is for the main container-->
       
@@ -155,7 +152,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Error</h4>
+            <h4 class="modal-title">Try again...</h4>
           </div>
           <div class="modal-body">
             <p id="error">Dream jobs come to those who search</p>

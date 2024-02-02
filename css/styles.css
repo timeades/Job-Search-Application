@@ -4,13 +4,10 @@
     width: 50%;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-gap: 20px;
-}
 
-.videoPlayer {
+/* .videoPlayer {
     aspect-ratio: 16/9;
     width: 100%;
-}
+} */
+
+

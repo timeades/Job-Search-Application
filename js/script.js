@@ -40,18 +40,28 @@ fetch(jobSearchRequest)
 
 
 
+var searchButton = $("#search-btn");
+var savedSearches = [];
+
 $(document).ready(function () {
-    var searchButton = $("#search-btn");
+    
 
     searchButton.on("click", function (event) {
         event.preventDefault();
-
         var jobInput = $("#job-search").val().trim();
-
+        var locInput = $("#location-search").val().trim();
+        
+        // Present an error message if job title search is missing
         if (jobInput === "") {
             $("#empty-input").modal("show");
-        }
+            return
 
-        console.log("All okay");
+        }
+        // Save user input to local storage so that past seraches can be retrieved
+        if ($("#save-search").prop("checked")) {
+            savedSearches.push({job: jobInput, location: locInput});
+            localStorage.setItem('searches', JSON.stringify(savedSearches));
+            console.log(savedSearches)
+        }
     });
 });

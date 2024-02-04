@@ -1,10 +1,20 @@
 /* css file for project */
 
-
 #searchForm {
     width: 50%;
 }
 
+body {
+    font-family: sans-serif;
+}
+.protest-guerrilla-regular {
+    font-family: "Protest Guerrilla", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #212529;
+    font-size: 1.5em;
+  }
+  
 
 
 /* .videoPlayer {

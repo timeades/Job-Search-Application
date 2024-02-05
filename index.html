@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- jQuery -->
@@ -41,7 +42,7 @@
 }
 
  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-      @media screen and (max-width: 600px) {
+      @media screen and (max-width: 500px) {
   .col {
     width: 100%;
   }
@@ -50,43 +51,37 @@
 </style>
       
       
- 
-
     <title>Job Search Application</title>
-  </head>
-  <body>
+</head>
+
+<body>
+
+    <header></header>
+    <div id="job-search"></div>
+
     <header class="container-fluid text-center text-white bg-dark p-2">
-      <h1>Job App Placeholder Name</h1>
+        <h1>Job App Placeholder Name</h1>
     </header>
-    <div class="container-fluid p-3">
-      <form id="job-search">
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            id="search-input"
-            class="form-control"
-            placeholder="Your dream job"
-            aria-label="Search field for job title"
-            aria-describedby="button-addon2"
-          />
-          <button
-            class="btn btn-outline-secondary"
-            type="submit"
-            id="search-btn"
-          >
-            Search
-          </button>
+    <div class="container-fluid p-3 mt-3">
+        <div id="job-search">
+            <div class="input-group mb-3">
+    <!-- Job search user input form section-->
+                <input type="text" class="form-control" placeholder="Your dream job"
+                    aria-label="Search field for job title" aria-describedby="button-addon2" />
+    <!-- Job search button section-->                
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                    Search
+                </button>
+            </div>
         </div>
-      </form>
     </div>
 
-
 <!--- Main Container for Job results and Youtube Interview questions Video related to the specific job search, the first div is for the main container-->
-      
+      <div class="container-fluid pt-5 pb-5">
              <div class="row">
  <!-- Carousel section that will be used to populate the job results that were searched by the user-->
         
-                <div class="colleft" style="background-color: aqua;">Column 1
+                <div class="colleft p-4" style="background-color:lightskyblue;">Column 1
 
 
                  <div id="carouselExampleDark" class="carousel carousel-dark slide">
@@ -132,7 +127,7 @@
               </div>
 
             <!--  Section where Youtube video related to the job search results will be embeded -->
-            <div class="colright" style="background-color: bisque;">Column 2
+            <div class="colright p-4" style="background-color:goldenrod;">Column 2
    
            <section id="video-prep" class="embed-responsive embed-responsive-21by9 ">
                  <iframe class="videoPlayer" src="https://www.youtube.com/embed/dZ1nb1Temoo?si=q401qFJZW4B2o7p9" 
@@ -142,38 +137,41 @@
                 <!-- Section where the Youtube video captions with information will go -->
                  <section id="video-details">
                <div class="mt-2 mb-5">
-                            <h6 class="caption">Cloud Engineer Interview Questions </h6>
+                            <h6 class="caption fs-5">Cloud Engineer Interview Questions </h6>
                             <figcaption class="figure-caption">In this video, Ryan Brown discusses 5 Cloud Engineer interview
                                 questions with answer examples written by William Swansen. For all of our Cloud Engineer
                                 interview questions.</figcaption>
                                 </div>                  
-                </section>
-               </div>
-               
-    <!-- Modal alert for empty input value -->
-    <div id="empty-input" class="modal hide fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Error</h4>
-          </div>
-          <div class="modal-body">
-            <p id="error">Dream jobs come to those who search</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-bs-dismiss="modal">
-              Okay
-            </button>
-          </div>
-        </div>
+                </section>    
+
+            </div>
+            
+
+
+ <!-- Modal alert for empty input value -->
+ <div id="empty-input" class="modal hide fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Error</h4>
+      </div>
+      <div class="modal-body">
+        <p id="error">Dream jobs come to those who search</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-bs-dismiss="modal">
+          Okay
+        </button>
       </div>
     </div>
+  </div>
+</div>
 
 
-   
+
 <!--- Closing DIVS for the main section row that has two columns in it -->
             </div>
-      </main>
+            </div>
 
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -181,6 +179,5 @@
 </body>
 
 </html>
-
 
 

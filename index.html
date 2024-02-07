@@ -59,16 +59,17 @@
     <header class="container-fluid protest-guerrilla-regular p-2">
       <h1>Placeholder Name</h1>
     </header>
-   <!-- Job search and location user input form section-->
-  <div class="container-fluid p-3 mt-5">
-    <form id="searchForm">
-      <div class="form-group py-2">
-        <label for="job-search"><h4>Where do you want to go next?</h4></label>
-        <input type="text" class="form-control form-control-lg" id="job-search" aria-label="Job search field" placeholder="Your dream job">
-      </div>
-      <div class="form-group input-group py-2">
-        <div class="input-group-prepend">
-          <span class="input-group-text">City</span>
+    <div class="container-fluid p-3 mt-5">
+        <div id="job-search">
+            <div class="input-group mb-3">
+    <!-- Job search user input form section-->
+                <input type="text" class="form-control" placeholder="Your dream job"
+                    aria-label="Search field for job title" aria-describedby="button-addon2" />
+    <!-- Job search button section-->                
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                    Search
+                </button>
+            </div>
         </div>
         <label for="location-search"></label>
         <input type="text" class="form-control" id="location-search" placeholder="">
@@ -180,7 +181,7 @@
               <div class="card shadow p-3 mb-5 mt-4 bg-body rounded" style="max-width: 38rem;">
 
                 <div class="ratio ratio-16x9" id="youutube-video">
-                  <iframe class="videoPlayer" width="1424" height="652" src="https://www.youtube.com/embed/dZ1nb1Temoo?si=q401qFJZW4B2o7p9" 
+                  <iframe class="videoPlayer" width="1424" height="652" src="https://www.youtube.com/embed/gfIFLGjREF8" 
                  title="YouTube video player" frameborder="0" 
                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div> 

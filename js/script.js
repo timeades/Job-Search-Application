@@ -1,6 +1,3 @@
-var API_KEY = "AIzaSyDJ_TtYRKTEfGXOpPfSva8_f83j5yPAeN4"
-
-
 // // javascript file for the project
 // var holdingVideoRequest = 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyBnDmExHOJTJnXSnZ6fXmQEhVeFXQeqe7c&type=video&q=intervew preperation&maxResults=5&order=date&video';
 
@@ -29,18 +26,18 @@ var API_KEY = "AIzaSyDJ_TtYRKTEfGXOpPfSva8_f83j5yPAeN4"
 var jobSearchRequest = 'https://www.themuse.com/api/public/jobs?category=Computer%20and%20IT&category=Science%20and%20Engineering&category=Software%20Engineer&category=Software%20Engineering&level=Entry%20Level&level=Mid%20Level&level=Senior%20Level&level=management&level=Internship&location=London%2C%20United%20Kingdom&page=1&descending=true';
 // Call to return jobs from The Muse hardcoded to London & junior developer
 fetch(jobSearchRequest)
-.then(function(response) {
-    return response.json();
-})
+    .then(function (response) {
+        return response.json();
+    })
 
-.then(function (videoData) {
-    console.log(videoData);
-})
+    .then(function (videoData) {
+        console.log(videoData);
+    })
 
 
-.then(function (jobData) {
-    console.log(jobData);
-})
+    .then(function (jobData) {
+        console.log(jobData);
+    })
 
 
 
@@ -48,26 +45,31 @@ var searchButton = $("#search-btn");
 var savedSearches = [];
 
 $(document).ready(function () {
+    var API_KEY = "AIzaSyApFXdJDruS8JwKHXhQ0BT2MrCi6vBRcaU"
+    var searchButton = $("#search-btn");
+
+searchButton.on("click", function (event) {
+    event.preventDefault();
+    var jobInput = $("#job-search").val().trim();
+    var locInput = $("#location-search").val().trim();
+
+    // Present an error message if job title search is missing
+    if (jobInput === "") {
+        $("#empty-input").modal("show");
+        return
+
+
+    }
+    // Save user input to local storage so that past seraches can be retrieved
+    if ($("#save-search").prop("checked")) {
+        savedSearches.push({ job: jobInput, location: locInput });
+        localStorage.setItem('searches', JSON.stringify(savedSearches));
+        console.log(savedSearches)
+    }
+    console.log("All okay");
+
     
-
-    searchButton.on("click", function (event) {
-        event.preventDefault();
-        var jobInput = $("#job-search").val().trim();
-        var locInput = $("#location-search").val().trim();
-        
-        // Present an error message if job title search is missing
-        if (jobInput === "") {
-            $("#empty-input").modal("show");
-            return
-
-        }
-        // Save user input to local storage so that past seraches can be retrieved
-        if ($("#save-search").prop("checked")) {
-            savedSearches.push({job: jobInput, location: locInput});
-            localStorage.setItem('searches', JSON.stringify(savedSearches));
-            console.log(savedSearches)
-        }
-    });
 });
+})
 
 // For loop for 

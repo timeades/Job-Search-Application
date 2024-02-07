@@ -2,69 +2,73 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
-    <link rel="stylesheet" href="css/styles.css" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+  <link rel="stylesheet" href="css/styles.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
- 
-    <!-- CSS Styling for the columns that are holding the carousel and the youtube video section-->
-   <style>
-        * {
-          box-sizing: border-box;
-        }
-        
-/* creating two equal columns that float side by side next to each other */
-        .col {
-          float: left;
-          width: 50%;
-          padding: 10px;
-        }
-/* Clears floats after the columns */
-.row:after {
-        content: "";
-        display: table;
-        clear: both;
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+  <!-- CSS Styling for the columns that are holding the carousel and the youtube video section-->
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* creating two equal columns that float side by side next to each other */
+    .col {
+      float: left;
+      width: 50%;
+      padding: 10px;
+    }
+
+    /* Clears floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Setting the width for the right column that contains the carousel, with the populated job search results */
+    .colright {
+      width: 30%;
+    }
+
+    /* Setting the width for the left column containing the youtube videos for the job interview preparations */
+    .colleft {
+      width: 70%;
+    }
+
+    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 500px) {
+      .col {
+        width: 100%;
       }
-/* Setting the width for the right column that contains the carousel, with the populated job search results */
-      .colright {  
-  width: 30%;
-}
-/* Setting the width for the left column containing the youtube videos for the job interview preparations */
-.colleft {
-  width: 70%;
-}
+    }
+  </style>
 
- /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-      @media screen and (max-width: 500px) {
-  .col {
-    width: 100%;
-  }
-}
+  <title>Job Search Application</title>
+</head>
 
-</style>
-      
-    <title>Job Search Application</title>
-  </head>
-  <body>
-    <header class="container-fluid protest-guerrilla-regular p-2">
-      <h1>Placeholder Name</h1>
-    </header>
-   <!-- Job search and location user input form section-->
+<body>
+  <header class="container-fluid protest-guerrilla-regular p-2">
+    <h1>Placeholder Name</h1>
+  </header>
+  <!-- Job search and location user input form section-->
   <div class="container-fluid p-3 mt-5">
     <form id="searchForm">
       <div class="form-group py-2">
-        <label for="job-search"><h4>Where do you want to go next?</h4></label>
-        <input type="text" class="form-control form-control-lg" id="job-search" aria-label="Job search field" placeholder="Your dream job">
+        <label for="job-search">
+          <h4>Where do you want to go next?</h4>
+        </label>
+        <input type="text" class="form-control form-control-lg" id="job-search" aria-label="Job search field"
+          placeholder="Your dream job">
       </div>
       <div class="form-group input-group py-2">
         <div class="input-group-prepend">
@@ -77,28 +81,103 @@
         <input type="checkbox" class="form-check-input" id="save-search">
         <label class="form-check-label" for="save-search">Save my search</label>
       </div>
-        <!-- Search button section with optional save checkbox-->  
+      <!-- Search button section with optional save checkbox-->
       <button type="submit" id="search-btn" class="btn btn-primary">Search</button>
     </form>
   </div>
 
 
-<!--- Main Container for Job results and Youtube Interview questions Video related to the specific job search, the first div is for the main container-->
-      <div class="container-fluid pt-5 pb-5 shadow-sm p-3 mb-5 bg-body rounded">
-             <div class="row">
- <!-- Carousel section that will be used to populate the job results that were searched by the user-->
-        
-                <div class="col-md-8 p-4 bg-warning border border-warning">
+  <!--- Main Container for Job results and Youtube Interview questions Video related to the specific job search, the first div is for the main container-->
+  <div class="container-fluid pt-5 pb-5 shadow-sm p-3 mb-5 bg-body rounded">
+    <div class="row">
+      <!-- Carousel section that will be used to populate the job results that were searched by the user-->
 
-                 <div id="carouselExampleDark" class="carousel carousel-dark slide">
-                    <div class="carousel-indicators">
-                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-                    <div class="carousel-inner">
-                      <div class="carousel-item active" data-bs-interval="10000">
-                        <!-- CARD 1: Card body that will hold all the job information-->
+      <div id="large-column" class="col-md-8 p-4 bg-warning border border-warning">
+        <section id="job-listings">
+
+        </section>
+
+      </div>
+
+
+      <!--  Section where Youtube video related to the job search results will be embeded -->
+      <div class="col-md-4 p-4 bg-success-subtle border">
+
+        <div class="card shadow p-3 mb-5 mt-4 bg-body rounded" style="max-width: 38rem;">
+
+          <div class="ratio ratio-16x9" id="youutube-video">
+            <iframe class="videoPlayer" width="1424" height="652"
+              src="https://www.youtube.com/embed/dZ1nb1Temoo?si=q401qFJZW4B2o7p9" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+          <div class="card-body" id="youtube-captions">
+            <!-- Section where the Youtube video captions with information will go -->
+            <h5 class="card-title fw-bold">Cloud Engineer Interview Questions </h5>
+            <p class="card-text">In this video, Ryan Brown discusses 5 Cloud Engineer
+              interview questions with answer examples written by William Swansen. For all of our Cloud Engineer
+              interview questions.</p>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+      <!-- Modal alert for empty input value -->
+      <div id="empty-input" class="modal hide fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Try again...</h4>
+            </div>
+            <div class="modal-body">
+              <p id="error">Dream jobs come to those who type</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-bs-dismiss="modal">
+                Okay
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <!--- Closing DIVS for the main section row that has two columns in it plus the main container-->
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+  <script src="https://kit.fontawesome.com/6ccc34e0d1.js" crossorigin="anonymous"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
+
+
+<!-- COPIED OUT FROM UNDER CAROUSEL BUTTONS
+            
+            <div id="carouselExampleDark" class="carousel carousel-dark slide">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+          </div>
+          <div id="carousel-inner" class="carousel-inner">
+           <div class="carousel-item active" data-bs-interval="10000">
+                       
                         <div class="card bg-light text-dark p-5 mb-5 shadow p-3 mb-5 mt-4 bg-body rounded">
                           <h5 class="card1-title fs-4 fw-bold text-primary" id="job-title">Oracle Cloud Engineer - EPM</h5>
                           <p class="recruiter-card1" id="recruiter-name1">Lloyds Banking Group</p>
@@ -113,13 +192,13 @@
                                 at nesciunt aperiam voluptatem quaerat doloremque nulla temporibus unde vitae magni odit, accusamus rem voluptas iste provident tempora!</p>
                           </div>
                       </div>
-                      <!-- END OF CARD 1 - That will hold all the job information-->
+                     
                         <div class="carousel-caption d-none d-md-block">
                           <h5>1</h5>
                         </div>
                       </div>
                       <div class="carousel-item" data-bs-interval="2000">
-                          <!-- CARD 2: Card body that will hold all the job information-->
+                          
                           <div class="card bg-light text-dark p-5 mb-5 shadow p-3 mb-5 bg-body rounded">
                             <h5 class="card2-title fs-4 fw-bold text-primary" id="job-title">Oracle Cloud Engineer - EPM</h5>
                             <p class="recruiter-card2" id="recruiter-name2">Lloyds Banking Group</p>
@@ -134,13 +213,13 @@
                                   at nesciunt aperiam voluptatem quaerat doloremque nulla temporibus unde vitae magni odit, accusamus rem voluptas iste provident tempora!</p>
                             </div>  
                         </div>
-                        <!-- END OF CARD 2 - That will hold all the job information-->
+                        
                         <div class="carousel-caption d-none d-md-block">
                           <h5>2</h5>
                         </div>
                       </div>
                       <div class="carousel-item">
-                      <!-- CARD 3: Card body that will hold all the job information-->
+                      
                       <div class="card bg-light text-dark p-5 mb-5 shadow p-3 mb-5 bg-body rounded">
                         <h5 class="card3-title fs-4 fw-bold text-primary" id="job-title3">Oracle Cloud Engineer - EPM</h5>
                         <p class="recruiter-card3" id="recruiter-name3">Lloyds Banking Group</p>
@@ -155,81 +234,19 @@
                               at nesciunt aperiam voluptatem quaerat doloremque nulla temporibus unde vitae magni odit, accusamus rem voluptas iste provident tempora!</p>
                         </div>
                     </div>
-                    <!-- END OF CARD 3 - That will hold all the job information-->
+                    
                         <div class="carousel-caption d-none d-md-block">
                           <h5>3</h5>
                         </div>
                       </div>
                     </div>
-                    <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Next</span>
-                    </button> -->
-                  </div> 
-
-         <!-- End of column 1 div-->
-              </div>
-
-            <!--  Section where Youtube video related to the job search results will be embeded -->
-            <div class="col-md-4 p-4 bg-success-subtle border" >
-   
-              <div class="card shadow p-3 mb-5 mt-4 bg-body rounded" style="max-width: 38rem;">
-
-                <div class="ratio ratio-16x9" id="youutube-video">
-                  <iframe class="videoPlayer" width="1424" height="652" src="https://www.youtube.com/embed/dZ1nb1Temoo?si=q401qFJZW4B2o7p9" 
-                 title="YouTube video player" frameborder="0" 
-                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div> 
-                <div class="card-body" id="youtube-captions">
-           <!-- Section where the Youtube video captions with information will go -->
-                  <h5 class="card-title fw-bold">Cloud Engineer Interview Questions </h5>
-                  <p class="card-text">In this video, Ryan Brown discusses 5 Cloud Engineer 
-                    interview questions with answer examples written by William Swansen. For all of our Cloud Engineer
-                      interview questions.</p>
-                </div>
-                
-              </div>
-              </div>
-              
-
-        
-               
-    <!-- Modal alert for empty input value -->
-    <div id="empty-input" class="modal hide fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Try again...</h4>
+                    </button> 
           </div>
-          <div class="modal-body">
-            <p id="error">Dream jobs come to those who type</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-bs-dismiss="modal">
-              Okay
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-
-
-<!--- Closing DIVS for the main section row that has two columns in it plus the main container-->
-            </div>
-            </div>
-
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/6ccc34e0d1.js" crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
-</body>
-
-</html>
-
-
+        </div>-->

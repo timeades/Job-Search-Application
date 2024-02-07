@@ -1,3 +1,6 @@
+var API_KEY = "AIzaSyDJ_TtYRKTEfGXOpPfSva8_f83j5yPAeN4"
+
+
 // // javascript file for the project
 // var holdingVideoRequest = 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyBnDmExHOJTJnXSnZ6fXmQEhVeFXQeqe7c&type=video&q=intervew preperation&maxResults=5&order=date&video';
 
@@ -21,6 +24,7 @@
 // .then(function (videoData) {
 //     console.log(videoData);
 // })
+
 
 var jobSearchRequest = 'https://www.themuse.com/api/public/jobs?category=Computer%20and%20IT&category=Science%20and%20Engineering&category=Software%20Engineer&category=Software%20Engineering&level=Entry%20Level&level=Mid%20Level&level=Senior%20Level&level=management&level=Internship&location=London%2C%20United%20Kingdom&page=1&descending=true';
 // Call to return jobs from The Muse hardcoded to London & junior developer
@@ -65,3 +69,5 @@ $(document).ready(function () {
         }
     });
 });
+
+// For loop for 

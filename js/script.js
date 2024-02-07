@@ -21,8 +21,15 @@
 // .then(function (videoData) {
 //     console.log(videoData);
 // })
-$(document).ready(function () {
-var jobSearchRequest = 'https://www.themuse.com/api/public/jobs?category=Computer%20and%20IT&category=Science%20and%20Engineering&category=Software%20Engineer&category=Software%20Engineering&level=Entry%20Level&level=Mid%20Level&level=Senior%20Level&level=management&level=Internship&location=London%2C%20United%20Kingdom&page=1&descending=true';
+document.addEventListener("DOMContentLoaded", function() {
+    
+    const params = new URLSearchParams({
+        page: 1,
+        sort: "newest",
+        api_key: "f0deb10a061285bd0b703a1bb091dbade8f4d9e8bbc868caff3376b916281bd9"
+      }).toString();
+
+var jobSearchRequest = `https://www.themuse.com/api/public/jobs?location=London%2C%20United%20Kingdom&${params}`;
 // Call to return jobs from The Muse hardcoded to London & junior developer
 fetch(jobSearchRequest)
     .then(function (response) {
@@ -43,7 +50,7 @@ fetch(jobSearchRequest)
             cardHtml += '<h5 class="card1-title fs-4 fw-bold text-primary" id="job-title">' + element.name + '</h5>'; // Job title
             cardHtml += '<p class="recruiter-card1" id="recruiter-name1">'+ element.company.name +'</p>'; // Recruiter
             // cardHtml += '<p class="salary-card1 fw-bold" id="salary1"><i class="bi bi-cash"></i> £66,861 - £100,292 a year </p>'; // Salary
-            cardHtml += '<p class="location-card1 fw-bold" id="location1"><i class="bi bi-geo-alt"></i>' + element.locations[0].name + '</p>'; // Location
+            cardHtml += '<p class="location-card1 fw-bold" id="location1"><i class="bi bi-geo-alt"></i>' + element.locations[0].name + ' or Flexible/Remote </p>'; // Location
             cardHtml += '<p class="partfull-card1 fw-bold" id="partfull-time1"><i class="bi bi-clock-history"></i> Full-Time </p>'; // Part/Full time
             cardHtml += '<p class="level-card1 fw-bold" id="seniority-level1"><i class="bi bi-bar-chart-line"></i> Senior Level </p>'; // Seniority level
             cardHtml += '<a href="#readmore">Job Description</a>'; // Job description link

@@ -1,25 +1,19 @@
 /* css file for project */
 
 #searchForm {
-    width: 50%;
+  width: 50%;
 }
 
 body {
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
-.protest-guerrilla-regular {
-    font-family: "Protest Guerrilla", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    color: #212529;
-    font-size: 1.5em;
-  }
-  
-  #job-listing {
-    position: relative;
-    height: 300px;
-  }
 
+#job-listings {
+  height: 500px;
+  width: auto;
+  margin: auto;
+  overflow: auto;
+}
 
 /* @media (max-width: 400px) {
     td { 
@@ -28,29 +22,24 @@ body {
     } 
     } */
 
-    /* Large desktop */
+/* Large desktop */
 /* @media (min-width: 1200px) { .col {
     width: 100%;
   } } */
- 
+
 /* Portrait tablet to landscape and desktop */
 /* @media (min-width: 768px) and (max-width: 979px) { .col {
     width: 100%;
   } } */
- 
+
 /* Landscape phone to portrait tablet */
 /* @media (max-width: 767px) { .col {
     width: 100%;
   } } */
- 
+
 /* Landscape phones and down */
 /* @media (max-width: 480px) { .col {
     width: 100%;
   }} */
 
-
-/* code to display more text after readmore is clicked*/
-  #readmore { display: none }
-
-#readmore:target { display: block }
 

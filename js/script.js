@@ -1,3 +1,17 @@
+
+// Call to return videos from youtube
+fetch(youtubevideoRequest)
+.then(function(response) {
+    return response.json();
+var currentuserVideo = `https://www.youtube.com/embed/${data.items[0].id.videoId}`
+    videoIframe.setAttribute("src",currentuserVideo)
+
+})
+.then(function (youtubevideoRequest) {
+    console.log(youtubevideoRequest);
+})
+
+
 // // javascript file for the project
 // var holdingVideoRequest = 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyBnDmExHOJTJnXSnZ6fXmQEhVeFXQeqe7c&type=video&q=intervew preperation&maxResults=5&order=date&video';
 

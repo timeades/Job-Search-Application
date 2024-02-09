@@ -63,7 +63,8 @@ document.addEventListener("DOMContentLoaded", function() {
           } else {
               jobSearchRequest = `https://www.reed.co.uk/api/1.0/search?keywords=${jobInput}&locationName=${locInput}&resultsToTake=10`;
           }
-  
+          var jobInput = $("#job-search").val().trim();
+          var jobListing = $("#job-listings");
           fetch(jobSearchRequest, {
               method: 'GET',
               headers: headers
@@ -74,8 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(function (data) {
                 console.log(data)
                 console.log(data.results);
-                var jobInput = $("#job-search").val().trim();
-                var jobListing = $("#job-listings");
+
 
                 // Clear existing job listings
                 jobListing.empty();

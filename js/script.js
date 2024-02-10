@@ -73,6 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(function (data) {
         console.log(data);
         const videoIframe = document.querySelector(".videoPlayer");
+        const videoTitle = document.querySelector(".videoTitle")
+        const videoCaption = document.querySelector(".VideoCaption")
         var currentuserVideo = `https://www.youtube.com/embed/${data.items[0].id.videoId}`;
         videoIframe.setAttribute("src", currentuserVideo);
       });

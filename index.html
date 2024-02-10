@@ -84,12 +84,12 @@
       <button type="submit" id="search-btn" class="btn btn-primary">Search</button>
     </form>
   </div>
- 
+
 
   <!--- Main Container for Job results and Youtube Interview questions Video related to the specific job search, the first div is for the main container-->
-  <div class="container-fluid pt-5 pb-5 shadow-sm p-3 mb-5 bg-body rounded">
+  <div class="container-fluid pt-5 pb-5  p-3 mb-5 bg-body rounded">
     <div class="row">
-      <!-- Carousel section that will be used to populate the job results that were searched by the user-->
+      <!-- scrolling section that will be used to populate the job results that were searched by the user-->
 
       <div id="large-column" class="col-md-8 p-4 bg-warning border border-warning">
         <section id="job-listings">
@@ -124,8 +124,21 @@
 
         </div>
       </div>
+      <!-- side scrolling section that will be used to populate the job results that were saved by the user-->
 
+      <div id="row-two" class="container-fluid pt-1 pb-5 mb-5 bg-body rounded">
 
+        <div class="row">
+
+          <div id="saved-scroller" class="col p-4 bg-primary-subtle border primary-subtle">
+            <h5 class="fw-bold">Saved Searches</h5>
+       <section id="saved-listings">
+        
+        </section>
+
+          </div>
+        </div>
+      </div>
 
 
       <!-- Modal alert for empty input value -->
@@ -168,4 +181,3 @@
 </body>
 
 </html>
-

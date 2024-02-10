@@ -40,11 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(data);
         const videoIframe = document.querySelector(".videoPlayer");
         const videoTitle = document.querySelector(".videoTitle")
-        const videoCaption = document.querySelector(".VideoCaption")
+        const videoCaption = document.querySelector(".videoCaption")
         var currentuserVideo = `https://www.youtube.com/embed/${data.items[0].id.videoId}`;
         videoIframe.setAttribute("src", currentuserVideo);
         videoTitle.textContent = data.items[0].snippet.title;
-      });
+        videoCaption.textContent = data.items[0].snippet.description;
+            });
 
 
 

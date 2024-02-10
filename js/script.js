@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const videoCaption = document.querySelector(".VideoCaption")
         var currentuserVideo = `https://www.youtube.com/embed/${data.items[0].id.videoId}`;
         videoIframe.setAttribute("src", currentuserVideo);
+        videoTitle.textContent = data.items[0].snippet.title;
       });
 
 

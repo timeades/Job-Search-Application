@@ -33,83 +33,83 @@
 //     console.log(videoData);
 // })
 document.addEventListener("DOMContentLoaded", function () {
+  var API_KEY = "AIzaSyDJ_TtYRKTEfGXOpPfSva8_f83j5yPAeN4"; // youtube API KEY to retrieve video data
 
-    var API_KEY = "AIzaSyApFXdJDruS8JwKHXhQ0BT2MrCi6vBRcaU"; // youtube API KEY to retrieve video data
+  var searchButton = $("#search-btn");
+  var savedSearches = [];
 
-    var searchButton = $("#search-btn");
+  searchButton.on("click", function (event) {
+    event.preventDefault();
+    var jobInput = $("#job-search").val().trim();
+    var locInput = $("#location-search").val().trim();
 
-  
+    // Present an error message if job title search is missing
+    if (jobInput === "") {
+      $("#empty-input").modal("show");
+      return;
+    }
 
-    searchButton.on("click", function (event) {
-      event.preventDefault();
-      var jobInput = $("#job-search").val().trim();
-      var locInput = $("#location-search").val().trim();
+    // Save user input to local storage so that past searches can be retrieved
+    if ($("#save-search").prop("checked")) {
+      savedSearches.push({ job: jobInput, location: locInput });
+      localStorage.setItem("searches", JSON.stringify(savedSearches));
+      console.log(savedSearches);
+    }
 
-      // Present an error message if job title search is missing
-      if (jobInput === "") {
-        $("#empty-input").modal("show");
-        return;
-      }
+    // Variable to collect youtube video + api key + jobinput from the user
+    var youtubevideoRequest =
+      "https://www.googleapis.com/youtube/v3/search?part=snippet&key=" +
+      API_KEY +
+      "&type=video&q=" +
+      jobInput + "interview" + "questions&answers" +
+      "&maxResults=5&order=date&video";
 
-      // Save user input to local storage so that past searches can be retrieved
-      if ($("#save-search").prop("checked")) {
-        savedSearches.push({ job: jobInput, location: locInput });
-        localStorage.setItem("searches", JSON.stringify(savedSearches));
-        console.log(savedSearches);
-      }
-
-      // Variable to collect youtube video + api key + jobinput from the user
-      // var youtubevideoRequest =
-      //   "https://www.googleapis.com/youtube/v3/search?part=snippet&key=" +
-      //   API_KEY +
-      //   "&type=video&q=" +
-      //   jobInput +
-      //   "interview" +
-      //   "questions&answers" +
-      //   "&maxResults=5&order=date&video";
-
-      // // fetch request to go and retrieve video from youtube database
-      // fetch(youtubevideoRequest)
-      //   .then(function (response) {
-      //     return response.json();
-      //   })
-      //   // function to collect specific data information from youtube using dot notation for each job interview
-      //   .then(function (data) {
-      //     console.log(data);
-      //     const videoIframe = document.querySelector(".videoPlayer");
-      //     var currentuserVideo = `https://www.youtube.com/embed/${data.items[0].id.videoId}`;
-      //     videoIframe.setAttribute("src", currentuserVideo);
-      //   });
-
-      // Perform fetch request based on user input
-      // const params = new URLSearchParams({
-      //     page: 1,
-      //     sort: "newest",
-      //     catagory: jobInput,
-      //     api_key: "f0deb10a061285bd0b703a1bb091dbade8f4d9e8bbc868caff3376b916281bd9"
-      // }).toString();
-
-      // var jobSearchRequest = `https://www.themuse.com/api/public/jobs?${params}`;
-      // Perform fetch request based on user input
-      var reedAPI = "64e50c34-0640-453a-952d-41d13cbff2c3";
-      var headers = new Headers();
-      headers.set("Authorization", "Basic " + btoa(reedAPI + ":"));
-
-      var jobSearchRequest;
-      if (locInput === "") {
-        jobSearchRequest = `https://www.reed.co.uk/api/1.0/search?keywords=${jobInput}&resultsToTake=10`;
-      } else {
-        jobSearchRequest = `https://www.reed.co.uk/api/1.0/search?keywords=${jobInput}&locationName=${locInput}&resultsToTake=10`;
-      }
-      var jobInput = $("#job-search").val().trim();
-
-      fetch(jobSearchRequest, {
-        method: "GET",
-        headers: headers,
+    // fetch request to go and retrieve video from youtube database
+    fetch(youtubevideoRequest)
+      .then(function (response) {
+        return response.json();
       })
-        .then(function (response) {
-          return response.json();
-        })
+    // function to collect specific data information from youtube using dot notation for each job interview
+      .then(function (data) {
+        console.log(data);
+        const videoIframe = document.querySelector(".videoPlayer");
+        const videoTitle = document.querySelector(".videoTitle")
+        const videoCaption = document.querySelector(".VideoCaption")
+        var currentuserVideo = `https://www.youtube.com/embed/${data.items[0].id.videoId}`;
+        videoIframe.setAttribute("src", currentuserVideo);
+      });
+
+
+
+    // Perform fetch request based on user input
+    // const params = new URLSearchParams({
+    //     page: 1,
+    //     sort: "newest",
+    //     catagory: jobInput,
+    //     api_key: "f0deb10a061285bd0b703a1bb091dbade8f4d9e8bbc868caff3376b916281bd9"
+    // }).toString();
+
+    // var jobSearchRequest = `https://www.themuse.com/api/public/jobs?${params}`;
+    // Perform fetch request based on user input
+    var reedAPI = "64e50c34-0640-453a-952d-41d13cbff2c3";
+    var headers = new Headers();
+    headers.set("Authorization", "Basic " + btoa(reedAPI + ":"));
+
+    var jobSearchRequest;
+    if (locInput === "") {
+      jobSearchRequest = `https://www.reed.co.uk/api/1.0/search?keywords=${jobInput}&resultsToTake=10`;
+    } else {
+      jobSearchRequest = `https://www.reed.co.uk/api/1.0/search?keywords=${jobInput}&locationName=${locInput}&resultsToTake=10`;
+    }
+    var jobInput = $("#job-search").val().trim();
+    var jobListing = $("#job-listings");
+    fetch(jobSearchRequest, {
+      method: "GET",
+      headers: headers,
+    })
+      .then(function (response) {
+        return response.json();
+      })
         .then(function (data) {
           console.log(data);
           console.log(data.results);

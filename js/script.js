@@ -33,7 +33,7 @@
 //     console.log(videoData);
 // })
 document.addEventListener("DOMContentLoaded", function () {
-  var API_KEY = "AIzaSyApFXdJDruS8JwKHXhQ0BT2MrCi6vBRcaU"; // youtube API KEY to retrieve video data
+  var API_KEY = "AIzaSyDJ_TtYRKTEfGXOpPfSva8_f83j5yPAeN4"; // youtube API KEY to retrieve video data
 
   var searchButton = $("#search-btn");
   var savedSearches = [];

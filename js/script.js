@@ -33,12 +33,7 @@
 //     console.log(videoData);
 // })
 document.addEventListener("DOMContentLoaded", function () {
-
   var API_KEY = "AIzaSyDJ_TtYRKTEfGXOpPfSva8_f83j5yPAeN4"; // youtube API KEY to retrieve video data
-
-
-
-
 
   var searchButton = $("#search-btn");
   var savedSearches = [];
@@ -219,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     cardHtml += '</div>'; // End of card
                     listItem.html(cardHtml); // Set HTML content of carousel item
                     jobListing.append(listItem); // Append carousel item to carousel inner
-                }
+                }});
 
               
         function truncateText(text, maxLength) {
@@ -234,5 +229,4 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error fetching data:", error);
       });
   });
-
 });

@@ -33,7 +33,12 @@
 //     console.log(videoData);
 // })
 document.addEventListener("DOMContentLoaded", function () {
+
   var API_KEY = "AIzaSyDJ_TtYRKTEfGXOpPfSva8_f83j5yPAeN4"; // youtube API KEY to retrieve video data
+
+
+
+
 
   var searchButton = $("#search-btn");
   var savedSearches = [];
@@ -161,6 +166,62 @@ document.addEventListener("DOMContentLoaded", function () {
           jobListing.append(listItem); // Append carousel item to carousel inner
         }
 
+        var reedAPI = '64e50c34-0640-453a-952d-41d13cbff2c3';
+        var headers = new Headers();
+        headers.set('Authorization', 'Basic ' + btoa(reedAPI + ':'));
+
+        var jobSearchRequest;
+        if (locInput === "") {
+            jobSearchRequest = `https://www.reed.co.uk/api/1.0/search?keywords=${jobInput}&resultsToTake=10`;
+        } else {
+            jobSearchRequest = `https://www.reed.co.uk/api/1.0/search?keywords=${jobInput}&locationName=${locInput}&resultsToTake=10`;
+        }
+        var jobInput = $("#job-search").val().trim();
+        var jobListing = $("#job-listings");
+
+        function truncateText(text, maxLength) {
+            if (text.length > maxLength) {
+                return text.substring(0, maxLength) + "..."; // Truncate text if it exceeds maxLength
+            } else {
+                return text; // Return original text if it's within maxLength
+            }
+        }
+        fetch(jobSearchRequest, {
+            method: 'GET',
+            headers: headers
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data)
+                console.log(data.results);
+
+
+                // Clear existing job listings
+                jobListing.empty();
+
+                for (let i = 0; i < 10; i++) {
+                    const element = data.results[i];
+                    var div = $('<div>'); // Create carousel item
+                    var listItem = div.addClass("container")
+                    var cardHtml = '<div class="card bg-light text-dark p-1 mb-5 shadow p-3 mb-5 mt-4 bg-body rounded">'; // Card HTML
+                    cardHtml += '<h5 class="card1-title fs-4 fw-bold text-primary" id="job-title">' + element.jobTitle + '</h5>'; // Job title
+                    cardHtml += '<p class="recruiter-card1" id="recruiter-name1">' + element.employerName + '</p>'; // Recruiter
+  
+                    cardHtml += '<p class="location-card1 fw-bold" id="location1"><i class="bi bi-geo-alt"></i> ' + element.locationName + '</p>'; // Location updated to append <br> if locInput is not empty
+
+                    if (element.minimumSalary !== null) {
+                        cardHtml += '<p class="salary-card1 fw-bold" id="salary1"><i class="bi bi-cash"></i> £' + element.minimumSalary + ' - £' + element.maximumSalary + '</p>'
+                    } cardHtml += '<p class="fw-bold"><i class="bi bi-clock-history"></i> Apply by: ' + element.expirationDate + ' </p>';
+                    cardHtml += '<p><small>' + truncateText(element.jobDescription, 500) + '</p>'; // Dummy content truncated to 500 characters
+                    cardHtml += '<a href="' + element.jobUrl + '" class="btn btn-primary" role="button">Apply Now! 🚀</a>'; // Job description link
+                    cardHtml += '</div>'; // End of card
+                    listItem.html(cardHtml); // Set HTML content of carousel item
+                    jobListing.append(listItem); // Append carousel item to carousel inner
+                }
+
+              
         function truncateText(text, maxLength) {
           if (text.length > maxLength) {
             return text.substring(0, maxLength) + "..."; // Truncate text if it exceeds maxLength
@@ -173,4 +234,5 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error fetching data:", error);
       });
   });
+
 });

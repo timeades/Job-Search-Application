@@ -8,6 +8,10 @@ body {
   font-family: sans-serif;
 }
 
+#placeholder-img{
+object-fit: contain;
+}
+
 #job-listings {
   height: 500px;
   width: auto;
@@ -24,9 +28,9 @@ body {
   height: 100%;
   width: 100%;
 }
-  
 
-  /* Ensure the collapsed column remains in a horizontal layout */
+
+/* Ensure the collapsed column remains in a horizontal layout */
 #vid-column.collapse.show {
   display: flex !important;
 }
@@ -46,23 +50,29 @@ body {
 #saved-listings {
 
   overflow-x: auto;
-  white-space: nowrap; /* Prevents line breaks */
+  white-space: nowrap;
+  /* Prevents line breaks */
 }
 
 #saved-listings .container {
-  display: inline-block; /* Ensure containers are displayed in a line */
-  margin-right: 10px; /* Adjust spacing between containers */
+  display: inline-block;
+  /* Ensure containers are displayed in a line */
+  margin-right: 10px;
+  /* Adjust spacing between containers */
 }
 
 #row-two {
-  display: none; /* Hide the row initially */
+  display: none;
+  /* Hide the row initially */
 }
 
 .saved-mini {
   width: 450px !important;
-}.logo.img {
+}
+
+.logo.img {
   height: 500vh;
-  
+
 
 }
 
@@ -92,5 +102,3 @@ body {
 /* @media (max-width: 480px) { .col {
     width: 100%;
   }} */
-
-

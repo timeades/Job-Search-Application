@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "&maxResults=5&order=date&video";
 
     // fetch request to go and retrieve video from youtube database
+<<<<<<< HEAD
     // fetch(youtubevideoRequest)
     //   .then(function (response) {
     //     return response.json();
@@ -54,6 +55,23 @@ document.addEventListener("DOMContentLoaded", function () {
     //     var currentuserVideo = `https://www.youtube.com/embed/${data.items[0].id.videoId}`;
     //     videoIframe.setAttribute("src", currentuserVideo);
     //   });
+=======
+    fetch(youtubevideoRequest)
+      .then(function (response) {
+        return response.json();
+      })
+    // function to collect specific data information from youtube using dot notation for each job interview
+      .then(function (data) {
+        console.log(data);
+        const videoIframe = document.querySelector(".videoPlayer");
+        const videoTitle = document.querySelector(".videoTitle")
+        const videoCaption = document.querySelector(".videoCaption")
+        var currentuserVideo = `https://www.youtube.com/embed/${data.items[0].id.videoId}`;
+        videoIframe.setAttribute("src", currentuserVideo);
+        videoTitle.textContent = data.items[0].snippet.title;
+        videoCaption.textContent = data.items[0].snippet.description;
+            });
+>>>>>>> 4808c07664f781e58f53ba9bec0304e0937fc535
 
 
 

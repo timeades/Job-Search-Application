@@ -60,7 +60,12 @@ body {
 
 .saved-mini {
   width: 450px !important;
+}.logo.img {
+  height: 500vh;
+  
+
 }
+
 /* @media (max-width: 400px) {
     td { 
         float:none; 

@@ -2,19 +2,53 @@ document.addEventListener("DOMContentLoaded", function () {
   var API_KEY = "AIzaSyASDiHIn9V4EDItkPiC0eI5OVHikkj8az8"; // youtube API KEY to retrieve video data
 
   var searchButton = $("#search-btn");
-  var vidColumn = $("#vid-column");
+  var clearButton = $("#clear-btn")
   var isColumnExpanded = false;
   var savedCards = JSON.parse(localStorage.getItem("savedCards")) || [];
   if (savedCards.length > 0) {
     $("#row-two").show(); // Show the #row-two element if there are saved cards
   }
+
+
   // Retrieve saved searches from local storage
   var savedSearch = JSON.parse(localStorage.getItem("search")) || {};
+
+    //Delete saved card listings
+    clearButton.on("click", function(){
+      localStorage.removeItem("savedCards");
+      $("#row-two").toggle()
+      $("#saved-listings").empty();
+    })
 
   // Set default input values if saved
   if (savedSearch.job && savedSearch.location) {
     $("#job-search").val(savedSearch.job);
     $("#location-search").val(savedSearch.location);
+  }
+
+
+// Populate any saved cards to the saved searches bar
+  function populateSaves() {
+    var savedCards = JSON.parse(localStorage.getItem("savedCards")) || []; // Retrieve saved cards from local storage
+    var savedListingsSection = $("#saved-listings"); // Select the section where saved listings will be appended
+
+    // Clear existing content in the saved listings section
+    savedListingsSection.empty();
+
+    savedCards.forEach(function(cardHtml) {
+      // Convert cardHtml string to jQuery object
+      
+      var card = $(cardHtml);
+     
+      // Remove elements with "description" class and "save-card" class
+      card.find('.description').remove(); // Remove elements with "description" class
+      card.find('.save-card').remove(); // Remove elements with "save-card" class
+  
+      // Append modified card HTML to the saved listings section
+      savedListingsSection.append(card);
+
+    });
+    savedListingsSection.find('.container').addClass('saved-mini')
   }
 
   searchButton.on("click", function (event) {
@@ -33,6 +67,10 @@ document.addEventListener("DOMContentLoaded", function () {
   
       isColumnExpanded = true;
     }
+    var jobListing = $("#job-listings");
+    // Clear existing job listings
+    jobListing.empty();
+    jobListing.css('overflow', 'auto');
   
 
     // Save user input to local storage so that past searches can be retrieved
@@ -115,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
           var cardHtml =
             '<div class="card bg-light text-dark p-1 mb-5 shadow p-3 mb-5 mt-4 bg-body rounded">'; // Card HTML
           cardHtml +=
-            '<h5 class="card1-title fs-4 fw-bold text-primary" id="job-title">' +
+            '<h5 class="card1-title fs-4 fw-bold text-primary text-wrap" id="job-title">' +
             element.jobTitle +
             "</h5>"; // Job title
           cardHtml +=
@@ -165,7 +203,9 @@ document.addEventListener("DOMContentLoaded", function () {
           savedCards.push(cardHtml);
           localStorage.setItem("savedCards", JSON.stringify(savedCards));
           $("#row-two").show();
+          $("#saved-a-card").modal("show");
           populateSaves();
+          
         });
 
         function truncateText(text, maxLength) {
@@ -177,12 +217,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       })
 
-      // function populateSaves(){
-        
-      // }
+      populateSaves()
+    
+ 
 
       .catch(function (error) {
         console.error("Error fetching data:", error);
       });
   });
+       // Call populateSaves function when the document is loaded
+       
+       populateSaves();
+       
 });

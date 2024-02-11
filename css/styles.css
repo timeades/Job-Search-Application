@@ -12,19 +12,25 @@ body {
   height: 500px;
   width: auto;
   margin: auto;
-  overflow: auto;
+  overflow: hidden;
+ 
 }
 
+.overflow-auto {
+  overflow: auto;
+}
 
 #placeholder-icon {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 100%;
-}
   
+}
+
+#placeholder-img{
+  object-fit: contain;
+}
 
   /* Ensure the collapsed column remains in a horizontal layout */
 #vid-column.collapse.show {
@@ -58,7 +64,9 @@ body {
   display: none; /* Hide the row initially */
 }
 
-.logo.img {
+.saved-mini {
+  width: 450px !important;
+}.logo.img {
   height: 500vh;
   
 

@@ -26,6 +26,39 @@ body {
 }
   
 
+  /* Ensure the collapsed column remains in a horizontal layout */
+#vid-column.collapse.show {
+  display: flex !important;
+}
+
+/* Hide the collapsed column initially */
+#vid-column.collapsing {
+  display: none !important;
+}
+
+
+#saved-scroller {
+  height: 480px;
+
+}
+
+
+#saved-listings {
+
+  overflow-x: auto;
+  white-space: nowrap; /* Prevents line breaks */
+}
+
+#saved-listings .container {
+  display: inline-block; /* Ensure containers are displayed in a line */
+  margin-right: 10px; /* Adjust spacing between containers */
+}
+
+#row-two {
+  display: none; /* Hide the row initially */
+}
+
+
 /* @media (max-width: 400px) {
     td { 
         float:none; 

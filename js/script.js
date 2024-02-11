@@ -164,6 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
           savedCards.push(cardHtml);
           localStorage.setItem("savedCards", JSON.stringify(savedCards));
           $("#row-two").show();
+          populateSaves();
         });
 
         function truncateText(text, maxLength) {
@@ -174,6 +175,10 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
       })
+
+      function populateSaves(){
+        
+      }
 
       .catch(function (error) {
         console.error("Error fetching data:", error);

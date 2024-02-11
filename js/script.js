@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var API_KEY = "AIzaSyDJ_TtYRKTEfGXOpPfSva8_f83j5yPAeN4"; // youtube API KEY to retrieve video data
+  var API_KEY = "AIzaSyASDiHIn9V4EDItkPiC0eI5OVHikkj8az8"; // youtube API KEY to retrieve video data
 
   var searchButton = $("#search-btn");
   var vidColumn = $("#vid-column");
@@ -49,24 +49,25 @@ document.addEventListener("DOMContentLoaded", function () {
       jobInput +
       "interview" +
       "questions&answers" +
+      "most&Popular"
       "&maxResults=5&order=date&video";
 
     // fetch request to go and retrieve video from youtube database
-    // fetch(youtubevideoRequest)
-    //   .then(function (response) {
-    //     return response.json();
-    //   })
-    //   // function to collect specific data information from youtube using dot notation for each job interview
-    //   .then(function (data) {
-    //     console.log(data);
-    //     const videoIframe = document.querySelector(".videoPlayer");
-    //     const videoTitle = document.querySelector(".videoTitle");
-    //     const videoCaption = document.querySelector(".videoCaption");
-    //     var currentuserVideo = `https://www.youtube.com/embed/${data.items[0].id.videoId}`;
-    //     videoIframe.setAttribute("src", currentuserVideo);
-    //     videoTitle.textContent = data.items[0].snippet.title;
-    //     videoCaption.textContent = data.items[0].snippet.description;
-    //   });
+    fetch(youtubevideoRequest)
+      .then(function (response) {
+        return response.json();
+      })
+      // function to collect specific data information from youtube using dot notation for each job interview
+      .then(function (data) {
+        console.log(data);
+        const videoIframe = document.querySelector(".videoPlayer");
+        const videoTitle = document.querySelector(".videoTitle");
+        const videoCaption = document.querySelector(".videoCaption");
+        var currentuserVideo = `https://www.youtube.com/embed/${data.items[0].id.videoId}`;
+        videoIframe.setAttribute("src", currentuserVideo);
+        videoTitle.textContent = data.items[0].snippet.title;
+        videoCaption.textContent = data.items[0].snippet.description;
+      });
 
     // Perform fetch request based on user input
     // const params = new URLSearchParams({

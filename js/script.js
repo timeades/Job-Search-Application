@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+  
   var API_KEY = "AIzaSyASDiHIn9V4EDItkPiC0eI5OVHikkj8az8"; // youtube API KEY to retrieve video data
 
   var searchButton = $("#search-btn");
@@ -184,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
           cardHtml +=
             "<p class='description'><small>" +
             truncateText(element.jobDescription, 500) +
-            "</p>"; // Dummy content truncated to 500 characters
+            "</p>"; // Description content truncated to 500 characters
           cardHtml +=
             '<a href="' +
             element.jobUrl +

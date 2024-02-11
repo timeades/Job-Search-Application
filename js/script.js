@@ -67,6 +67,10 @@ document.addEventListener("DOMContentLoaded", function () {
   
       isColumnExpanded = true;
     }
+    var jobListing = $("#job-listings");
+    // Clear existing job listings
+    jobListing.empty();
+    jobListing.css('overflow', 'auto');
   
 
     // Save user input to local storage so that past searches can be retrieved
@@ -149,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
           var cardHtml =
             '<div class="card bg-light text-dark p-1 mb-5 shadow p-3 mb-5 mt-4 bg-body rounded">'; // Card HTML
           cardHtml +=
-            '<h5 class="card1-title fs-4 fw-bold text-primary" id="job-title">' +
+            '<h5 class="card1-title fs-4 fw-bold text-primary text-wrap" id="job-title">' +
             element.jobTitle +
             "</h5>"; // Job title
           cardHtml +=

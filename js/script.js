@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var API_KEY = "AIzaSyDJ_TtYRKTEfGXOpPfSva8_f83j5yPAeN4"; // youtube API KEY to retrieve video data
 
   var searchButton = $("#search-btn");
+  var vidColumn = $("#vid-column");
+  var isColumnExpanded = false;
   var savedCards = JSON.parse(localStorage.getItem("savedCards")) || [];
   if (savedCards.length > 0) {
     $("#row-two").show(); // Show the #row-two element if there are saved cards
@@ -19,12 +21,19 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
     var jobInput = $("#job-search").val().trim();
     var locInput = $("#location-search").val().trim();
+ 
 
     // Present an error message if job title search is missing
     if (jobInput === "") {
       $("#empty-input").modal("show");
       return;
     }
+    if (!isColumnExpanded) {
+      $("#vid-column").removeClass("d-none").animate({ width: '30%' }, 500);
+  
+      isColumnExpanded = true;
+    }
+  
 
     // Save user input to local storage so that past searches can be retrieved
     if ($("#save-search").prop("checked")) {
@@ -37,43 +46,27 @@ document.addEventListener("DOMContentLoaded", function () {
       "https://www.googleapis.com/youtube/v3/search?part=snippet&key=" +
       API_KEY +
       "&type=video&q=" +
-      jobInput + "interview" + "questions&answers" +
+      jobInput +
+      "interview" +
+      "questions&answers" +
       "&maxResults=5&order=date&video";
 
     // fetch request to go and retrieve video from youtube database
-<<<<<<< HEAD
     // fetch(youtubevideoRequest)
     //   .then(function (response) {
     //     return response.json();
     //   })
-    // // function to collect specific data information from youtube using dot notation for each job interview
+    //   // function to collect specific data information from youtube using dot notation for each job interview
     //   .then(function (data) {
     //     console.log(data);
     //     const videoIframe = document.querySelector(".videoPlayer");
-    //     const videoTitle = document.querySelector(".videoTitle")
-    //     const videoCaption = document.querySelector(".VideoCaption")
+    //     const videoTitle = document.querySelector(".videoTitle");
+    //     const videoCaption = document.querySelector(".videoCaption");
     //     var currentuserVideo = `https://www.youtube.com/embed/${data.items[0].id.videoId}`;
     //     videoIframe.setAttribute("src", currentuserVideo);
+    //     videoTitle.textContent = data.items[0].snippet.title;
+    //     videoCaption.textContent = data.items[0].snippet.description;
     //   });
-=======
-    fetch(youtubevideoRequest)
-      .then(function (response) {
-        return response.json();
-      })
-    // function to collect specific data information from youtube using dot notation for each job interview
-      .then(function (data) {
-        console.log(data);
-        const videoIframe = document.querySelector(".videoPlayer");
-        const videoTitle = document.querySelector(".videoTitle")
-        const videoCaption = document.querySelector(".videoCaption")
-        var currentuserVideo = `https://www.youtube.com/embed/${data.items[0].id.videoId}`;
-        videoIframe.setAttribute("src", currentuserVideo);
-        videoTitle.textContent = data.items[0].snippet.title;
-        videoCaption.textContent = data.items[0].snippet.description;
-            });
->>>>>>> 4808c07664f781e58f53ba9bec0304e0937fc535
-
-
 
     // Perform fetch request based on user input
     // const params = new URLSearchParams({
@@ -104,88 +97,86 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(function (response) {
         return response.json();
       })
-        .then(function (data) {
-          console.log(data);
-          console.log(data.results);
-          var jobListing = $("#job-listings");
-          // Clear existing job listings
-          jobListing.empty();
-          // var placeholder = document.getElementById("placeholder-icon");
-          // placeholder.remove(); // Removes the div with the 'div-02' id
+      .then(function (data) {
+        console.log(data);
+        console.log(data.results);
+        var jobListing = $("#job-listings");
+        // Clear existing job listings
+        jobListing.empty();
+        // var placeholder = document.getElementById("placeholder-icon");
+        // placeholder.remove(); // Removes the div with the 'div-02' id
 
+        for (let i = 0; i < 10; i++) {
+          const element = data.results[i];
 
-          for (let i = 0; i < 10; i++) {
-            const element = data.results[i];
-
-            var div = $("<div>"); // Create list of career cards
-            var listItem = div.addClass("container");
-            var cardHtml =
-              '<div class="card bg-light text-dark p-1 mb-5 shadow p-3 mb-5 mt-4 bg-body rounded">'; // Card HTML
+          var div = $("<div>"); // Create list of career cards
+          var listItem = div.addClass("container");
+          var cardHtml =
+            '<div class="card bg-light text-dark p-1 mb-5 shadow p-3 mb-5 mt-4 bg-body rounded">'; // Card HTML
+          cardHtml +=
+            '<h5 class="card1-title fs-4 fw-bold text-primary" id="job-title">' +
+            element.jobTitle +
+            "</h5>"; // Job title
+          cardHtml +=
+            '<p class="recruiter-card1" id="recruiter-name1">' +
+            element.employerName +
+            "</p>"; // Recruiter
+          // cardHtml += '<p class="salary-card1 fw-bold" id="salary1"><i class="bi bi-cash"></i> £66,861 - £100,292 a year </p>'; // Salary
+          // if (locInput !== "") {
+          cardHtml +=
+            '<p class="location-card1 fw-bold" id="location1"><i class="bi bi-geo-alt"></i> ' +
+            element.locationName +
+            "</p>"; // Location updated to append <br> if locInput is not empty
+          // } else {
+          //     cardHtml += '<p class="location-card1 fw-bold" id="location1"><i class="bi bi-geo-alt"></i>Flexible/Remote </p>'; // Location without <br> if locInput is empty
+          // }
+          if (element.minimumSalary !== null) {
             cardHtml +=
-              '<h5 class="card1-title fs-4 fw-bold text-primary" id="job-title">' +
-              element.jobTitle +
-              "</h5>"; // Job title
-            cardHtml +=
-              '<p class="recruiter-card1" id="recruiter-name1">' +
-              element.employerName +
-              "</p>"; // Recruiter
-            // cardHtml += '<p class="salary-card1 fw-bold" id="salary1"><i class="bi bi-cash"></i> £66,861 - £100,292 a year </p>'; // Salary
-            // if (locInput !== "") {
-            cardHtml +=
-              '<p class="location-card1 fw-bold" id="location1"><i class="bi bi-geo-alt"></i> ' +
-              element.locationName +
-              "</p>"; // Location updated to append <br> if locInput is not empty
-            // } else {
-            //     cardHtml += '<p class="location-card1 fw-bold" id="location1"><i class="bi bi-geo-alt"></i>Flexible/Remote </p>'; // Location without <br> if locInput is empty
-            // }
-            if (element.minimumSalary !== null) {
-              cardHtml +=
-                '<p class="salary-card1 fw-bold" id="salary1"><i class="bi bi-cash"></i> £' +
-                element.minimumSalary +
-                " - £" +
-                element.maximumSalary +
-                "</p>";
-            }
-            cardHtml +=
-              '<p class="fw-bold"><i class="bi bi-clock-history"></i> Apply by: ' +
-              element.expirationDate +
-              " </p>";
-            cardHtml +=
-              "<p class='description'><small>" + truncateText(element.jobDescription, 500) + "</p>"; // Dummy content truncated to 500 characters
-            cardHtml +=
-              '<a href="' +
-              element.jobUrl +
-              '" class="btn btn-primary" role="button">Apply Now! 🚀</a>'; // Job description link
-            cardHtml += `<button class="btn btn-secondary save-card">Save</button>`; // New button
-      cardHtml += "</div>";
-
-      listItem.html(cardHtml);
-      jobListing.append(listItem);
-    }
-  
-
-  // Handle click event of the "Save" button
-  $(".save-card").on("click", function () {
-    var cardHtml = $(this).closest(".container")[0].outerHTML;
-    var savedCards = JSON.parse(localStorage.getItem("savedCards")) || [];
-    savedCards.push(cardHtml);
-    localStorage.setItem("savedCards", JSON.stringify(savedCards));
-    $("#row-two").show();
-  });
-
-          function truncateText(text, maxLength) {
-            if (text.length > maxLength) {
-              return text.substring(0, maxLength) + "..."; // Truncate text if it exceeds maxLength
-            } else {
-              return text; // Return original text if it's within maxLength
-            }
+              '<p class="salary-card1 fw-bold" id="salary1"><i class="bi bi-cash"></i> £' +
+              element.minimumSalary +
+              " - £" +
+              element.maximumSalary +
+              "</p>";
           }
-        })
+          cardHtml +=
+            '<p class="fw-bold"><i class="bi bi-clock-history"></i> Apply by: ' +
+            element.expirationDate +
+            " </p>";
+          cardHtml +=
+            "<p class='description'><small>" +
+            truncateText(element.jobDescription, 500) +
+            "</p>"; // Dummy content truncated to 500 characters
+          cardHtml +=
+            '<a href="' +
+            element.jobUrl +
+            '" class="btn btn-primary" role="button">Apply Now! 🚀</a>'; // Job description link
+          cardHtml += `<button class="mx-2 btn btn-success save-card ">Save</button>`; // New button
+          cardHtml += "</div>";
 
-        .catch(function (error) {
-          console.error("Error fetching data:", error);
+          listItem.html(cardHtml);
+          jobListing.append(listItem);
+        }
+
+        // Handle click event of the "Save" button
+        $(".save-card").on("click", function () {
+          var cardHtml = $(this).closest(".container")[0].outerHTML;
+          var savedCards = JSON.parse(localStorage.getItem("savedCards")) || [];
+          savedCards.push(cardHtml);
+          localStorage.setItem("savedCards", JSON.stringify(savedCards));
+          $("#row-two").show();
         });
-    });
+
+        function truncateText(text, maxLength) {
+          if (text.length > maxLength) {
+            return text.substring(0, maxLength) + "..."; // Truncate text if it exceeds maxLength
+          } else {
+            return text; // Return original text if it's within maxLength
+          }
+        }
+      })
+
+      .catch(function (error) {
+        console.error("Error fetching data:", error);
+      });
   });
-
-
+});

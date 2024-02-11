@@ -23,10 +23,22 @@ body {
   justify-content: center;
   height: 500px;}
 
+  /* Ensure the collapsed column remains in a horizontal layout */
+#vid-column.collapse.show {
+  display: flex !important;
+}
+
+/* Hide the collapsed column initially */
+#vid-column.collapsing {
+  display: none !important;
+}
+
+
 #saved-scroller {
   height: 480px;
 
 }
+
 
 #saved-listings {
 
@@ -42,6 +54,8 @@ body {
 #row-two {
   display: none; /* Hide the row initially */
 }
+
+
 /* @media (max-width: 400px) {
     td { 
         float:none; 

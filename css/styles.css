@@ -58,7 +58,9 @@ body {
   display: none; /* Hide the row initially */
 }
 
-
+.saved-mini {
+  width: 450px !important;
+}
 /* @media (max-width: 400px) {
     td { 
         float:none; 

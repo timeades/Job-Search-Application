@@ -13,7 +13,6 @@ body {
   width: auto;
   margin: auto;
   overflow: hidden;
- 
 }
 
 .overflow-auto {
@@ -25,14 +24,19 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
 }
 
-#placeholder-img{
+/* This is hidden until the screen size gets small */
+#placeholder-text {
+  display: none;
+  height: 100%;
+}
+
+#placeholder-img {
   object-fit: contain;
 }
 
-  /* Ensure the collapsed column remains in a horizontal layout */
+/* Ensure the collapsed column remains in a horizontal layout */
 #vid-column.collapse.show {
   display: flex !important;
 }
@@ -42,15 +46,11 @@ body {
   display: none !important;
 }
 
-
 #saved-scroller {
   height: 480px;
-
 }
 
-
 #saved-listings {
-
   overflow-x: auto;
   white-space: nowrap; /* Prevents line breaks */
 }
@@ -66,39 +66,26 @@ body {
 
 .saved-mini {
   width: 450px !important;
-}.logo.img {
+}
+.logo.img {
   height: 500vh;
-  
-
 }
 
+/* Hide the placeholder icon when screen width is less than 920px and replace with simple text. One section per row. */
+@media screen and (max-width: 920px) {
+  #placeholder-img {
+    display: none; 
+  }
+  #vid-column {
+    width: 100% !important;
+  }
+  #placeholder-text {
+    display: show;
+  }
+}
 
-
-/* @media (max-width: 400px) {
-    td { 
-        float:none; 
-        display:block; 
-    } 
-    } */
-
-/* Large desktop */
-/* @media (min-width: 1200px) { .col {
-    width: 100%;
-  } } */
-
-/* Portrait tablet to landscape and desktop */
-/* @media (min-width: 768px) and (max-width: 979px) { .col {
-    width: 100%;
-  } } */
-
-/* Landscape phone to portrait tablet */
-/* @media (max-width: 767px) { .col {
-    width: 100%;
-  } } */
-
-/* Landscape phones and down */
-/* @media (max-width: 480px) { .col {
-    width: 100%;
-  }} */
-
-
+@media screen and (max-width: 870px) {
+  .input-column {
+    width: 100% !important;
+  }
+}

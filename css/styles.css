@@ -52,7 +52,7 @@ body {
 
 #saved-listings {
   overflow-x: auto;
-  white-space: nowrap; /* Prevents line breaks */
+  white-space: nowrap; 
 }
 
 #saved-listings .container {

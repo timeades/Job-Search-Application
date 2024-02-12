@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/styles.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
@@ -34,16 +34,6 @@
       clear: both;
     }
 
-    /* Setting the width for the right column that contains the carousel, with the populated job search results */
-    /* .colright {
-      width: 30%;
-    } */
-
-    /* Setting the width for the left column containing the youtube videos for the job interview preparations */
-    /* .colleft {
-      width: 60%;
-    } */
-
     .input-column {
       width: 50%;
     }
@@ -51,29 +41,13 @@
     .logo-column {
       width: 50%;
     }
-
-    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-    @media screen and (max-width: 500px) {
-      .col {
-        width: 100%;
-      }
-
-      .input-column {
-        width: 100%;
-      }
-
-      .logo-column {
-        width: 100%;
-      }
-    }
   </style>
 
-  <title>Job Search Application</title>
+  <title>LADDER: Dream Jobs</title>
 </head>
 
 <body>
-  <header class="container-fluid p-2">
-  </header>
+  <header class="container-fluid p-2"></header>
   <!-- Job search and location user input form section and logo section-->
   <div class="container-fluid p-3 mt-2">
     <div class="row">
@@ -88,53 +62,49 @@
               <h4>Where do you want to go next?</h4>
             </label>
             <input type="text" class="form-control form-control-lg" id="job-search" aria-label="Job search field"
-              placeholder="Your dream job">
+              placeholder="Your dream job" />
           </div>
           <div class="form-group input-group py-2">
             <div class="input-group-prepend">
               <span class="input-group-text">City</span>
             </div>
             <label for="location-search"></label>
-            <input type="text" class="form-control" id="location-search" placeholder="">
+            <input type="text" class="form-control" id="location-search" placeholder="" />
           </div>
           <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="save-search">
+            <input type="checkbox" class="form-check-input" id="save-search" />
             <label class="form-check-label" for="save-search">Save my search</label>
           </div>
           <!-- Search button section with optional save checkbox-->
-          <button type="submit" id="search-btn" class="btn btn-primary">Search</button>
+          <button type="submit" id="search-btn" class="btn btn-primary">
+            Search
+          </button>
         </form>
       </div>
-
     </div>
   </div>
 
-
-  <!--- Main Container for Job results and Youtube Interview questions Video related to the specific job search, the first div is for the main container-->
-  <div class="container-fluid pt-5 pb-5  p-3 mb-5 bg-body rounded">
+  <!--- Main Container for Job results and Youtube Interview Questions Video related to the specific job search, the first div is for the main container-->
+  <div class="container-fluid pt-5 pb-5 p-3 mb-5 bg-body rounded">
     <div class="row">
       <!-- scrolling section that will be used to populate the job results that were searched by the user-->
 
       <div id="listing-column" class="col p-4 bg-warning border border-warning">
         <section id="job-listings">
           <div id="placeholder-icon" class="d-flex justify-content-center align-items-center">
-            <img id="placeholder-img" src="images/holder img2 LADDER Style.jpg">
+            <img id="placeholder-img" src="images/holder img2 LADDER Style.jpg" />
           </div>
           <div id="placeholder-text" class="d-flex justify-content-center align-items-center">
-            <p>Let's get started... <i class="fa-regular fa-paper-plane"></i></p>
+            <p>
+              Let's get started... <i class="fa-regular fa-paper-plane"></i>
+            </p>
           </div>
-
         </section>
-
       </div>
 
-
       <!--  Section where Youtube video related to the job search results will be embeded -->
-      <div id="vid-column" class="col-md-1 p-4 bg-success-subtle bg-gradient border d-none">
-
-
-        <div class="card shadow p-3 mb-5  bg-body rounded" style="max-width: 38rem;">
-
+      <div id="vid-column" class="col-md-1 p-4 bg-success-subtle bg-gradient border d-none d-flex justify-content-center">
+        <div class="card shadow p-3 mb-5 bg-body rounded " style="max-width: 38rem">
           <div class="ratio ratio-16x9" id="youutube-video">
             <iframe class="videoPlayer" width="1424" height="652" title="YouTube video player" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -145,26 +115,23 @@
             <h5 class="videoTitle fw-bold"></h5>
             <p class="videoCaption"></p>
           </div>
-
         </div>
       </div>
       <!-- side scrolling section that will be used to populate the job results that were saved by the user-->
 
       <div id="row-two" class="container-fluid pt-1 pb-5 mb-5 bg-body rounded">
-
         <div class="row">
-
           <div id="saved-scroller" class="col p-4 bg-primary-subtle border primary-subtle">
-            <h5 class="fw-bold">Saved Searches <button id="clear-btn" class="mx-2 btn btn-danger mx-2">Clear
-                all</button> </h5>
-            <section id="saved-listings">
-
-            </section>
-
+            <h5 class="fw-bold">
+              Saved Searches
+              <button id="clear-btn" class="mx-2 btn btn-danger mx-2">
+                Clear all
+              </button>
+            </h5>
+            <section id="saved-listings"></section>
           </div>
         </div>
       </div>
-
 
       <!-- Modal alert for empty input value -->
       <div id="empty-input" class="modal hide fade" role="dialog">
@@ -182,10 +149,8 @@
               </button>
             </div>
           </div>
-
         </div>
       </div>
-
 
       <!-- Modal alert for saving a job -->
       <div id="saved-a-card" class="modal hide fade" role="dialog">
@@ -195,15 +160,13 @@
               <p id="error">You saved a card!</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-success " data-bs-dismiss="modal">
+              <button type="button" class="btn btn-success" data-bs-dismiss="modal">
                 I won't forget
               </button>
             </div>
           </div>
-
         </div>
       </div>
-
 
       <!--- Closing DIVS for the main section row that has two columns in it plus the main container-->
     </div>
@@ -228,7 +191,7 @@
     <!-- Grid container -->
 
     <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05)">
       © 2024 Copyright:
       <a class="text-body" href="">LADDER.COM</a>
     </div>

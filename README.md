@@ -3,7 +3,7 @@
 ## Description
 A Job Search app that returns a list of 10 relevant job listings and an accompanying video of interview questions for that job title, according to the users 'Job Title' and 'Location' input. The location field is optional. Users can save their search input, as well as individual job listing cards, which will populate when they next return to the website.
 
-![Screenshot of deployed website on 12 Feb 2024](ladder-screen.png)
+![Screenshot of deployed website on 12 Feb 2024](images/ladder-screen.png)
 
 ## Usage
 

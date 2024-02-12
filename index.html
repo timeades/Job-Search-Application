@@ -35,14 +35,14 @@
     }
 
     /* Setting the width for the right column that contains the carousel, with the populated job search results */
-    .colright {
+    /* .colright {
       width: 30%;
-    }
+    } */
 
     /* Setting the width for the left column containing the youtube videos for the job interview preparations */
-    .colleft {
+    /* .colleft {
       width: 60%;
-    }
+    } */
 
     .input-column {
       width: 50%;
@@ -57,9 +57,11 @@
       .col {
         width: 100%;
       }
+
       .input-column {
         width: 100%;
       }
+
       .logo-column {
         width: 100%;
       }
@@ -70,41 +72,41 @@
 </head>
 
 <body>
-  <header class="container-fluid protest-guerrilla-regular p-2">
-  </header> 
+  <header class="container-fluid p-2">
+  </header>
   <!-- Job search and location user input form section and logo section-->
   <div class="container-fluid p-3 mt-2">
     <div class="row">
       <div class="logo-column">
-        <a class="logo-img" href="#"><img src="images/Ladder Logo number 1.png" alt="logo" width="400"/></a>
-     </div>
+        <a class="logo-img" href="#"><img src="images/Ladder Logo number 1.png" alt="logo" width="400" /></a>
+      </div>
 
       <div class="input-column mt-4">
-    <form id="searchForm">
-      <div class="form-group py-2">
-        <label for="job-search">
-          <h4>Where do you want to go next?</h4>
-        </label>
-        <input type="text" class="form-control form-control-lg" id="job-search" aria-label="Job search field"
-          placeholder="Your dream job">
+        <form id="searchForm">
+          <div class="form-group py-2">
+            <label for="job-search">
+              <h4>Where do you want to go next?</h4>
+            </label>
+            <input type="text" class="form-control form-control-lg" id="job-search" aria-label="Job search field"
+              placeholder="Your dream job">
+          </div>
+          <div class="form-group input-group py-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text">City</span>
+            </div>
+            <label for="location-search"></label>
+            <input type="text" class="form-control" id="location-search" placeholder="">
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="save-search">
+            <label class="form-check-label" for="save-search">Save my search</label>
+          </div>
+          <!-- Search button section with optional save checkbox-->
+          <button type="submit" id="search-btn" class="btn btn-primary">Search</button>
+        </form>
       </div>
-      <div class="form-group input-group py-2">
-        <div class="input-group-prepend">
-          <span class="input-group-text">City</span>
-        </div>
-        <label for="location-search"></label>
-        <input type="text" class="form-control" id="location-search" placeholder="">
-      </div>
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="save-search">
-        <label class="form-check-label" for="save-search">Save my search</label>
-      </div>
-      <!-- Search button section with optional save checkbox-->
-      <button type="submit" id="search-btn" class="btn btn-primary">Search</button>
-    </form>
+
     </div>
-    
-     </div>
   </div>
 
 
@@ -117,6 +119,9 @@
         <section id="job-listings">
           <div id="placeholder-icon" class="d-flex justify-content-center align-items-center">
             <img id="placeholder-img" src="images/holder img2 LADDER Style.jpg">
+          </div>
+          <div id="placeholder-text" class="d-flex justify-content-center align-items-center">
+            <p>Let's get started... <i class="fa-regular fa-paper-plane"></i></p>
           </div>
 
         </section>
@@ -131,18 +136,14 @@
         <div class="card shadow p-3 mb-5  bg-body rounded" style="max-width: 38rem;">
 
           <div class="ratio ratio-16x9" id="youutube-video">
-            <iframe class="videoPlayer" width="1424" height="652"
-              src="https://www.youtube.com/embed/dZ1nb1Temoo?si=q401qFJZW4B2o7p9" title="YouTube video player"
-              frameborder="0"
+            <iframe class="videoPlayer" width="1424" height="652" title="YouTube video player" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen></iframe>
           </div>
           <div class="card-body" id="youtube-captions">
             <!-- Section where the Youtube video title and captions with information will go -->
-            <h5 class="videoTitle fw-bold">Cloud Engineer Interview Questions </h5>
-            <p class="videoCaption">In this video, Ryan Brown discusses 5 Cloud Engineer
-              interview questions with answer examples written by William Swansen. For all of our Cloud Engineer
-              interview questions.</p>
+            <h5 class="videoTitle fw-bold"></h5>
+            <p class="videoCaption"></p>
           </div>
 
         </div>
@@ -154,10 +155,11 @@
         <div class="row">
 
           <div id="saved-scroller" class="col p-4 bg-primary-subtle border primary-subtle">
-            <h5 class="fw-bold">Saved Searches <button id="clear-btn" class="mx-2 btn btn-danger mx-2">Clear all</button> </h5>
-       <section id="saved-listings">
-        
-        </section>
+            <h5 class="fw-bold">Saved Searches <button id="clear-btn" class="mx-2 btn btn-danger mx-2">Clear
+                all</button> </h5>
+            <section id="saved-listings">
+
+            </section>
 
           </div>
         </div>
@@ -213,24 +215,26 @@
   <footer class="text-center">
     <!-- Grid container -->
     <div class="container p-4 pb-0">
-    <!-- Section: Social media -->
-    <section class="mb-4">
-      <a href="https://www.linkedin.com/in/esther-babirye/" class="fa fa-linkedin btn btn-warning btn-floating" data-toggle="tooltip" data-placement="top" title="Esther Extra Babirye"></a>
-      <a href="https://www.linkedin.com/in/catherine-beagent/" class="fa fa-linkedin btn btn-warning btn-floating" data-toggle="tooltip" data-placement="top" title="Catherine Extra Beagent"></a>
-    </section>
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <a href="https://www.linkedin.com/in/esther-babirye/" class="fa fa-linkedin btn btn-warning btn-floating"
+          data-toggle="tooltip" data-placement="top" title="Esther Extra Babirye"></a>
+        <a href="https://www.linkedin.com/in/catherine-beagent/" class="fa fa-linkedin btn btn-warning btn-floating"
+          data-toggle="tooltip" data-placement="top" title="Catherine Extra Beagent"></a>
+      </section>
 
-    <!-- Section: Social media -->
+      <!-- Section: Social media -->
     </div>
     <!-- Grid container -->
 
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-  © 2024 Copyright:
-  <a class="text-body" href="">LADDER.COM</a>        
-  </div>
-  <!-- Copyright -->
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2024 Copyright:
+      <a class="text-body" href="">LADDER.COM</a>
+    </div>
+    <!-- Copyright -->
   </footer>
-<!-- End of Footer -->
+  <!-- End of Footer -->
 
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

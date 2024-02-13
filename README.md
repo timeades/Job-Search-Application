@@ -9,7 +9,17 @@ A Job Search app that returns a list of 10 relevant job listings and an accompan
 
 The website can be publically accessed at https://timeades.github.io/Job-Search-Application/
 
-CORS needs to be disabled for full app functionality.
+CORS needs to be disabled for full app functionality. To disable CORS checks in Google Chrome, you need to close the browser and start it with the --disable-web-security and --user-data-dir flags. By doing that, Google Chrome will not send CORS preflight requests and will not validate CORS headers.
+
+# Windows
+chrome.exe --user-data-dir="C://chrome-dev-disabled-security" --disable-web-security --disable-site-isolation-trials
+
+# macOS
+open /Applications/Google\ Chrome.app --args --user-data-dir="/var/tmp/chrome-dev-disabled-security" --disable-web-security --disable-site-isolation-trials
+
+# Linux
+google-chrome --user-data-dir="~/chrome-dev-disabled-security" --disable-web-security --disable-site-isolation-trials
+
 
 ## Credits
 This project makes use of the [YouTube Data API by Google](https://developers.google.com/youtube/v3) and the [Reed Job Seekers API](https://www.reed.co.uk/developers/jobseeker). 

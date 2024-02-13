@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $('[data-toggle="tooltip"]').tooltip()
   })
 
-  var API_KEY = "AIzaSyASDiHIn9V4EDItkPiC0eI5OVHikkj8az8"; // youtube API KEY to retrieve video data
+  var API_KEY = "AIzaSyDBcV-N-SVDCvRlN2BDT_B5KDCSoLK0r3Y"; // youtube API KEY to retrieve video data
 
   var searchButton = $("#search-btn");
   var clearButton = $("#clear-btn")
